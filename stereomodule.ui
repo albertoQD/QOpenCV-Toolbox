@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StereoModule</class>
+ <widget class="QWidget" name="StereoModule">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>822</width>
+    <height>585</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QOpenCV::Stereo Module</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_8">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <item row="0" column="0">
+    <widget class="QMenuBar" name="menubar">
+     <property name="maximumSize">
+      <size>
+       <width>822</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="defaultUp">
+      <bool>false</bool>
+     </property>
+     <widget class="QMenu" name="menuFile">
+      <property name="title">
+       <string>File</string>
+      </property>
+      <addaction name="actionLoad_left_image"/>
+      <addaction name="actionLoad_right_image"/>
+      <addaction name="separator"/>
+      <addaction name="actionSave_as"/>
+     </widget>
+     <widget class="QMenu" name="menuTools">
+      <property name="title">
+       <string>Tools</string>
+      </property>
+      <widget class="QMenu" name="menuFundamental_Matrix">
+       <property name="title">
+        <string>Fundamental Matrix</string>
+       </property>
+       <addaction name="action7_Points"/>
+       <addaction name="action8_Points_Method"/>
+       <addaction name="actionRANSAC"/>
+      </widget>
+      <addaction name="menuFundamental_Matrix"/>
+      <addaction name="actionHomography_Matrix"/>
+      <addaction name="separator"/>
+      <addaction name="actionDraw_Epipolar_Lines"/>
+      <addaction name="actionGenerate_Mosaic"/>
+      <addaction name="separator"/>
+      <addaction name="actionCalibrate_Camera"/>
+     </widget>
+     <addaction name="menuFile"/>
+     <addaction name="menuTools"/>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <layout class="QGridLayout" name="gridLayout_7">
+     <property name="leftMargin">
+      <number>9</number>
+     </property>
+     <property name="topMargin">
+      <number>9</number>
+     </property>
+     <property name="rightMargin">
+      <number>9</number>
+     </property>
+     <item row="0" column="0">
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Left Image</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QFrame" name="frame">
+             <property name="minimumSize">
+              <size>
+               <width>389</width>
+               <height>201</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="leftImageLabel">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Right Image</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QFrame" name="frame_2">
+             <property name="minimumSize">
+              <size>
+               <width>389</width>
+               <height>201</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_2">
+              <item row="0" column="0">
+               <widget class="QLabel" name="rightImageLabel">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QFrame" name="frame_3">
+           <property name="minimumSize">
+            <size>
+             <width>561</width>
+             <height>281</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_3">
+            <item row="0" column="0">
+             <widget class="QLabel" name="outputImageLabel">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame_4">
+           <property name="minimumSize">
+            <size>
+             <width>221</width>
+             <height>281</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <widget class="QLabel" name="label_3">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>10</y>
+              <width>121</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Matrix Output</string>
+            </property>
+           </widget>
+           <widget class="QComboBox" name="comboBox">
+            <property name="geometry">
+             <rect>
+              <x>40</x>
+              <y>40</y>
+              <width>141</width>
+              <height>27</height>
+             </rect>
+            </property>
+            <item>
+             <property name="text">
+              <string>Fundamental</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Homography</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Camera Matrix</string>
+             </property>
+            </item>
+           </widget>
+           <widget class="QLabel" name="matrixLeftTopLabel">
+            <property name="geometry">
+             <rect>
+              <x>40</x>
+              <y>110</y>
+              <width>41</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+           <widget class="Line" name="line">
+            <property name="geometry">
+             <rect>
+              <x>80</x>
+              <y>94</y>
+              <width>20</width>
+              <height>151</height>
+             </rect>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+           <widget class="Line" name="line_2">
+            <property name="geometry">
+             <rect>
+              <x>128</x>
+              <y>94</y>
+              <width>20</width>
+              <height>151</height>
+             </rect>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+           <widget class="Line" name="line_3">
+            <property name="geometry">
+             <rect>
+              <x>30</x>
+              <y>135</y>
+              <width>171</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+           <widget class="Line" name="line_4">
+            <property name="geometry">
+             <rect>
+              <x>30</x>
+              <y>178</y>
+              <width>171</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+           <widget class="QLabel" name="matrixCenterTopLabel">
+            <property name="geometry">
+             <rect>
+              <x>92</x>
+              <y>110</y>
+              <width>41</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="matrixRightTopLabel">
+            <property name="geometry">
+             <rect>
+              <x>150</x>
+              <y>110</y>
+              <width>41</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="matrixLeftMiddleLabel">
+            <property name="geometry">
+             <rect>
+              <x>40</x>
+              <y>158</y>
+              <width>41</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="matrixLeftBottomLabel">
+            <property name="geometry">
+             <rect>
+              <x>40</x>
+              <y>200</y>
+              <width>41</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="matrixCenterMiddleLabel">
+            <property name="geometry">
+             <rect>
+              <x>93</x>
+              <y>158</y>
+              <width>41</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="matrixCenterBottomLabel">
+            <property name="geometry">
+             <rect>
+              <x>93</x>
+              <y>200</y>
+              <width>41</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="matrixRightMiddleLabel">
+            <property name="geometry">
+             <rect>
+              <x>150</x>
+              <y>157</y>
+              <width>41</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="matrixRightBottomLabel">
+            <property name="geometry">
+             <rect>
+              <x>150</x>
+              <y>200</y>
+              <width>41</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+  <action name="actionLoad_right_image">
+   <property name="text">
+    <string>Load right image ...</string>
+   </property>
+  </action>
+  <action name="actionLoad_left_image">
+   <property name="text">
+    <string>Load left image ...</string>
+   </property>
+  </action>
+  <action name="actionSave_as">
+   <property name="text">
+    <string>Save as ...</string>
+   </property>
+  </action>
+  <action name="action7_Points">
+   <property name="text">
+    <string>7-Points Method</string>
+   </property>
+  </action>
+  <action name="action8_Points_Method">
+   <property name="text">
+    <string>8-Points Method</string>
+   </property>
+  </action>
+  <action name="actionRANSAC">
+   <property name="text">
+    <string>RANSAC</string>
+   </property>
+  </action>
+  <action name="actionHomography_Matrix">
+   <property name="text">
+    <string>Homography Matrix</string>
+   </property>
+  </action>
+  <action name="actionDraw_Epipolar_Lines">
+   <property name="text">
+    <string>Draw Epipolar Lines</string>
+   </property>
+  </action>
+  <action name="actionGenerate_Mosaic">
+   <property name="text">
+    <string>Generate Mosaic</string>
+   </property>
+  </action>
+  <action name="actionCalibrate_Camera">
+   <property name="text">
+    <string>Calibrate Camera ...</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
